@@ -8,7 +8,7 @@ Inspired on a gist from @humitos: https://gist.github.com/humitos/bfc241857b1f87
 It capture the title of the Spotify player, extract the author and track name
 and hit an API looking for lyrics. Short and simple.
 
-# requirements
+# Requirements
 - wmctrl (OS package)
 - requests (Python package)
 - a musixmatch api key (https://developer.musixmatch.com/)

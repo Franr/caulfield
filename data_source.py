@@ -51,11 +51,11 @@ class WMCtrlData(object):
             raise PlayerPaused
 
         try:
-            # WARNING: if there is more than one " - " on the string, will explode
-            artist, title = output.split(" - ")
-        except ValueError:
-            # an ugly workaround for an untested case
-            # at least it won't break
+            res = output.split(" - ")
+            # in case the title of the song contains a hyphen
+            artist, title = res[0], " - ".join(res[1:])
+        except (ValueError, IndexError):
+            # if something goes bad, we keep the previous values
             artist, title = self.artist, self.title
 
         if (self.artist, self.title) == (artist, title):

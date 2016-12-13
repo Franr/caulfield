@@ -27,7 +27,7 @@ class MusixMatchLyric(object):
         try:
             response = requests.get(self.ENDPOINT, payload).json()
             lyric = response['message']['body']['lyrics']['lyrics_body']
-        except (requests.RequestException, KeyError, TypeError):
+        except (requests.RequestException, KeyError, TypeError, ValueError):
             return "### bad request ###\n{}\n{}".format(self.ENDPOINT, payload)
         else:
             return lyric
