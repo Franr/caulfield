@@ -37,7 +37,7 @@ class WMCtrlData(object):
         self.status = status
 
     def get_info(self):
-        raw_output = commands.getoutput(self.COMMAND)
+        raw_output = commands.getoutput(self.COMMAND).decode('utf-8')
         if raw_output == '':
             raise PlayerClosed
 
@@ -46,7 +46,7 @@ class WMCtrlData(object):
         # right now the string is something like this
         # "<numbers>  <number> spotify.Spotify <hostname> <author> - <track>"
         # then we need to split using the hostname
-        output = raw_output.decode('utf-8').split(_hostname)[1].lstrip()
+        output = raw_output.split(_hostname)[1].lstrip()
         if output == self.PLAYER_NAME:
             raise PlayerPaused
 
